@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+class Main {
+
+  private int[] valores;
+  private int tamanho;
+
+    public Main(int tam){
+      if (tam > 0){
+        tamanho = tam;
+        valores = new int [tamanho];
+      }
+    }
+
+    public int Insere(int valor, int pos){
+      if (pos >= 0 && pos < valores.length){
+        valores[pos] = valor;
+        return valor;
+      }else{
+        return -1;
+      }
+    }
+
+  
+      public int Remove(int valor){
+      for(int i= 0 ; i < valores.length ; i++){
+        if(valores[i] == valor){
+          valor = 0;
+          valores[i] = valor;
+          return valor;
+       }
+      }
+      return valor;
+    }
+
+    
+
+    public void Busca(int n){
+      int i;
+
+      for (i = 0 ; i < valores.length ; i++){
+        if(valores[i] == n){
+          System.out.println("O valor esta no indice: "+ i);
+        }
+      }
+    }
+
+  public static void main(String[] args) {
+    Main m = new Main(5);
+    int n;
+
+    Scanner leia = new Scanner(System.in);
+
+    System.out.println("Digite o numero a ser removido: ");
+    n = leia.nextInt();
+
+    m.Insere(5, 3);
+
+    m.Remove(n);
+
+    System.out.println(m.valores[3]);
+    
+  }
+}
