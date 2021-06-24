@@ -1,0 +1,87 @@
+import java.util.Scanner;
+
+class Main {
+
+  private int[] idades;
+  private String[] nomes;
+  private int tamanho; 
+
+    public Main(int tam){
+      if (tam > 0){
+        tamanho = tam;
+        idades = new int[tamanho];
+        nomes = new String[tamanho];
+      }
+    }
+
+    public int Insere(String nome, int idade){
+
+     for(int i = 0; i < idades.length ; i++){
+      if(idades[i] == 0){
+        idades[i] = idade;
+        nomes[i] = nome;
+        return idade;
+      }
+     }
+     return -1;
+   }
+      
+    
+    public int Remove(String nome){
+
+      for(int i= 0 ; i < idades.length ; i++){
+        if(nomes[i] == nome){
+          nomes[i] = "vazio";
+          idades[i] = 0;
+          return 1;
+       }
+      }
+      return -1;
+    }
+
+    public void verifica_idade(int pos){
+        if(idades[pos] > 18){
+          System.out.println("Nome do aluno: "+ nomes[pos] +" Idade: "+ idades[pos]);
+        }else{
+          System.out.println("Menor de idade.");
+        }
+      }
+    
+
+    
+    public void Busca(String nome){
+  
+      for (int i = 0 ; i < nomes.length ; i++){
+        if(nomes[i] == nome){
+          System.out.println("Aluno encontrado: "+ nome);
+          break;
+        }else{
+          System.out.println("Aluno não encontrado.");
+        }
+      }
+    }
+
+
+  public static void main(String[] args) {
+    Main m = new Main(5);
+    
+    Scanner leia = new Scanner(System.in);
+
+    m.Insere("Joao", 16);
+    m.Insere("Paulo", 18);
+    m.Insere("Alex", 14);
+
+    System.out.println(m.nomes[1]);
+    System.out.println(m.idades[1]);
+
+    m.Remove("Paulo");
+
+    System.out.println(m.nomes[1]);
+    System.out.println(m.idades[1]);
+
+    m.Busca("Joao");
+
+    m.verifica_idade(2);
+
+  }
+}
